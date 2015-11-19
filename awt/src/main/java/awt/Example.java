@@ -97,9 +97,6 @@ public class Example {
 
         parser.setBrush(new BrushScala());
 
-        //
-        //parser.setHTMLScriptBrushes(Arrays.asList(new BrushCss(), new BrushScala()));
-
         // initialize the highlighter and use RDark theme
         SyntaxHighlighter highlighter = new SyntaxHighlighter(parser, new ThemeRDark());
         // set the line number count from 10 instead of 1
