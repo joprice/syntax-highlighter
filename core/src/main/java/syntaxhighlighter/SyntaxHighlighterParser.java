@@ -12,7 +12,7 @@ import syntaxhighlighter.parser.SyntaxHighlighter;
 
 /**
  * The SyntaxHighlighter parser for syntax highlight.
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class SyntaxHighlighterParser implements Parser {
 
@@ -70,11 +70,11 @@ public class SyntaxHighlighterParser implements Parser {
   }
 
   /**
-   * Set HTML Script brushes. Note that this will clear all previous recorded 
+   * Set HTML Script brushes. Note that this will clear all previous recorded
    * HTML Script brushes. See also {@link #setHtmlScript(boolean)}.
-   * The highlighter will re-render the script text pane every time this 
+   * The highlighter will re-render the script text pane every time this
    * function is invoked (if there is any content).
-   * 
+   *
    * @param htmlScriptBrushesList the list that contain the brushes
    */
   public void setHTMLScriptBrushes(List<Brush> htmlScriptBrushesList) {
@@ -89,11 +89,11 @@ public class SyntaxHighlighterParser implements Parser {
   /**
    * Add HTML Script brushes.
    * See also {@link #setHtmlScript(boolean)}.
-   * The highlighter will re-render the script text pane every time this 
-   * function is invoked (if there is any content). If multi brushes is needed 
-   * to be added, use {@link #getHTMLScriptBrushesList()} and 
-   * {@link #setHTMLScriptBrush(java.util.List)}.
-   * 
+   * The highlighter will re-render the script text pane every time this
+   * function is invoked (if there is any content). If multi brushes is needed
+   * to be added, use {@link #getHTMLScriptBrushesList()} and
+   * {@link #setHTMLScriptBrushes(java.util.List)}.
+   *
    * @param brush the brush to add
    */
   public void addHTMLScriptBrush(Brush brush) {
@@ -112,8 +112,8 @@ public class SyntaxHighlighterParser implements Parser {
 
   /**
    * Get the setting of the HTML Script option.
-   * See also {@link #setHTMLScriptBrush(java.util.List)}.
-   * 
+   * See also {@link #setHTMLScriptBrushes(java.util.List)}.
+   *
    * @return true if it is turned on, false if it is turned off
    */
   public boolean isHtmlScript() {
@@ -121,13 +121,13 @@ public class SyntaxHighlighterParser implements Parser {
   }
 
   /**
-   * Allows you to highlight a mixture of HTML/XML code and a script which is 
+   * Allows you to highlight a mixture of HTML/XML code and a script which is
    * very common in web development.
-   * See also {@link #setHTMLScriptBrush(java.util.List)} to set the brushes.
+   * See also {@link #setHTMLScriptBrushes(java.util.List)} to set the brushes.
    * Default is off.
-   * The highlighter will re-render the script text pane every time this 
+   * The highlighter will re-render the script text pane every time this
    * function is invoked (if there is any content).
-   * 
+   *
    * @param htmlScript true to turn on, false to turn off
    */
   public void setHtmlScript(boolean htmlScript) {

@@ -26,8 +26,8 @@ import java.util.regex.Pattern;
 
 /**
  * The regular expression rule.
- * 
- * @author Chan Wai Shing <cws1989@gmail.com>
+ *
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class RegExpRule {
 
@@ -68,23 +68,21 @@ public class RegExpRule {
    */
   protected Pattern pattern;
   /**
-   * The key is the group number (see {@link java.util.regex.Matcher}) of the 
+   * The key is the group number (see {@link java.util.regex.Matcher}) of the
    * matched result.
    * <p>
    * The value can either be a string or a RegExpRule:
    * <ul>
-   * <li>If it is a string, it should be one of the style key from 
-   * {@link syntaxhighlighter.theme}.<br />
-   * The style will be applied to the 'strip of string related to the group 
+   * <li>If it is a string, it should be one of the style key from a theme. <br>
+   * The style will be applied to the 'strip of string related to the group
    * number'.</li>
    * <li>If it is a RegExpRule, the RegExpRule will be applied on the 'strip
    * of string related to the group number' for further operations/matching.</li>
    * </ul>
-   * </p>
    */
   protected Map<Integer, Object> groupOperations;
   /**
-   * Set 'bold the matched results' or not. Null means don't set this, remain 
+   * Set 'bold the matched results' or not. Null means don't set this, remain
    * default.
    */
   protected Boolean bold;
@@ -181,7 +179,7 @@ public class RegExpRule {
   }
 
   /**
-   * Get the map of group operations. For more details, see 
+   * Get the map of group operations. For more details, see
    * {@link #groupOperations}.
    * @return a copy of the group operations map
    */
@@ -190,7 +188,7 @@ public class RegExpRule {
   }
 
   /**
-   * Set the map of group operations. For more details, see 
+   * Set the map of group operations. For more details, see
    * {@link #groupOperations}.
    * @param GroupOperations the group operations map
    */
@@ -204,7 +202,7 @@ public class RegExpRule {
 
   /**
    * Get whether bold the matched result or not.
-   * @return true means bold it, false means dun bold, null mean neither bold 
+   * @return true means bold it, false means dun bold, null mean neither bold
    * nor not bold (remain default)
    */
   public Boolean getBold() {
@@ -213,7 +211,7 @@ public class RegExpRule {
 
   /**
    * Set bold the matched results or not. Null means remain default.
-   * @param bold true means bold it, false means dun bold, null mean neither 
+   * @param bold true means bold it, false means dun bold, null mean neither
    * bold nor not bold (remain default)
    */
   public void setBold(Boolean bold) {

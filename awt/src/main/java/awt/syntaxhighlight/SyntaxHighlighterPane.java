@@ -55,14 +55,14 @@ import javax.swing.text.ViewFactory;
 
 /**
  * The text pane for displaying the script text.
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class SyntaxHighlighterPane extends JTextPane {
 
   private static final Logger LOG = Logger.getLogger(SyntaxHighlighterPane.class.getName());
   private static final long serialVersionUID = 1L;
   /**
-   * The line number offset. E.g. set offset to 9 will make the first line 
+   * The line number offset. E.g. set offset to 9 will make the first line
    * number to appear at line 1 + 9 = 10
    */
   private int lineNumberOffset;
@@ -71,12 +71,12 @@ public class SyntaxHighlighterPane extends JTextPane {
    */
   private Color highlightedBackground;
   /**
-   * Indicator that indicate to turn on the mouse-over highlight effect or not. 
+   * Indicator that indicate to turn on the mouse-over highlight effect or not.
    * See {@link #setHighlightOnMouseOver(boolean)}.
    */
   private boolean highlightWhenMouseOver;
   /**
-   * The list of line numbers that indicate which lines are needed to be 
+   * The list of line numbers that indicate which lines are needed to be
    * highlighted.
    */
   protected final List<Integer> highlightedLineList;
@@ -93,7 +93,7 @@ public class SyntaxHighlighterPane extends JTextPane {
    */
   protected Map<String, List<ParseResult>> styleList;
   /**
-   * Record the mouse cursor is currently pointing at which line of the 
+   * Record the mouse cursor is currently pointing at which line of the
    * document. -1 means not any line.
    * It is used internally.
    */
@@ -293,9 +293,9 @@ public class SyntaxHighlighterPane extends JTextPane {
   }
 
   /**
-   * Set the content of the syntax highlighter. It is better to set other 
+   * Set the content of the syntax highlighter. It is better to set other
    * settings first and set this the last.
-   * 
+   *
    * @param content the content to set
    */
   public void setContent(String content) {
@@ -340,8 +340,8 @@ public class SyntaxHighlighterPane extends JTextPane {
   }
 
   /**
-   * Apply the list of style to the script text pane. See 
-   * {@link syntaxhighlighter.parser.Parser#parse(syntaxhighlighter.brush.Brush, boolean, char[], int, int)}.
+   * Apply the list of style to the script text pane. See
+   * {@link syntaxhighlighter.parser.SyntaxHighlighter#parse(syntaxhighlighter.brush.Brush, boolean, char[], int, int)}.
    */
   protected void applyStyle() {
     if (theme == null || styleList == null) {
@@ -367,7 +367,7 @@ public class SyntaxHighlighterPane extends JTextPane {
 
   /**
    * Get current theme.
-   * 
+   *
    * @return the current theme
    */
   public Theme getTheme() {
@@ -376,7 +376,7 @@ public class SyntaxHighlighterPane extends JTextPane {
 
   /**
    * Set the theme.
-   * 
+   *
    * @param theme the theme
    */
   public void setTheme(Theme theme) {
@@ -395,9 +395,9 @@ public class SyntaxHighlighterPane extends JTextPane {
   }
 
   /**
-   * Get the line number offset. E.g. set offset to 9 will make the first line 
+   * Get the line number offset. E.g. set offset to 9 will make the first line
    * number to appear at line 1 + 9 = 10
-   * 
+   *
    * @return the offset
    */
   public int getLineNumberOffset() {
@@ -405,9 +405,9 @@ public class SyntaxHighlighterPane extends JTextPane {
   }
 
   /**
-   * Set the line number offset. E.g. set offset to 9 will make the first line 
+   * Set the line number offset. E.g. set offset to 9 will make the first line
    * number to appear at line 1 + 9 = 10
-   * 
+   *
    * @param offset the offset
    */
   public void setLineNumberOffset(int offset) {
@@ -417,7 +417,7 @@ public class SyntaxHighlighterPane extends JTextPane {
 
   /**
    * Get the color of the highlighted background. Default is black.
-   * 
+   *
    * @return the color
    */
   public Color getHighlightedBackground() {
@@ -426,7 +426,7 @@ public class SyntaxHighlighterPane extends JTextPane {
 
   /**
    * Set the color of the highlighted background. Default is black.
-   * 
+   *
    * @param highlightedBackground the color
    */
   public void setHighlightedBackground(Color highlightedBackground) {
@@ -439,7 +439,7 @@ public class SyntaxHighlighterPane extends JTextPane {
 
   /**
    * Check the status of the mouse-over highlight effect. Default is on.
-   * 
+   *
    * @return true if turned on, false if turned off
    */
   public boolean isHighlightOnMouseOver() {
@@ -448,10 +448,10 @@ public class SyntaxHighlighterPane extends JTextPane {
 
   /**
    * Set turn on the mouse-over highlight effect or not. Default is on.
-   * If set true, there will be a highlight effect on the line that the mouse 
-   * cursor currently is pointing on (on the script text area only, not on the 
+   * If set true, there will be a highlight effect on the line that the mouse
+   * cursor currently is pointing on (on the script text area only, not on the
    * line number panel).
-   * 
+   *
    * @param highlightWhenMouseOver true to turn on, false to turn off
    */
   public void setHighlightOnMouseOver(boolean highlightWhenMouseOver) {
@@ -464,7 +464,7 @@ public class SyntaxHighlighterPane extends JTextPane {
 
   /**
    * Get the list of highlighted lines.
-   * 
+   *
    * @return a copy of the list
    */
   public List<Integer> getHighlightedLineList() {
@@ -472,9 +472,9 @@ public class SyntaxHighlighterPane extends JTextPane {
   }
 
   /**
-   * Set highlighted lines. Note that this will clear all previous recorded 
+   * Set highlighted lines. Note that this will clear all previous recorded
    * highlighted lines.
-   * 
+   *
    * @param highlightedLineList the list that contain the highlighted lines
    */
   public void setHighlightedLineList(List<Integer> highlightedLineList) {
@@ -490,7 +490,7 @@ public class SyntaxHighlighterPane extends JTextPane {
 
   /**
    * Add highlighted line.
-   * 
+   *
    * @param lineNumber the line number to highlight
    */
   public void addHighlightedLine(int lineNumber) {
@@ -500,12 +500,12 @@ public class SyntaxHighlighterPane extends JTextPane {
 
   /**
    * Set the {@code font} according to {@code bold} and {@code italic}.
-   * 
+   *
    * @param font the font to set
    * @param bold true to set bold, false not
    * @param italic true to set italic, false not
-   * 
-   * @return the font with bold and italic changed, or null if the input 
+   *
+   * @return the font with bold and italic changed, or null if the input
    * {@code font} is null
    */
   protected static Font setFont(Font font, boolean bold, boolean italic) {

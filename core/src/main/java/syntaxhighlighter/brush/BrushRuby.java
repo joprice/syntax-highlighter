@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
 
 /**
  * Ruby brush.
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class BrushRuby extends Brush {
 

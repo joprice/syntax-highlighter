@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
 
 /**
  * SQL brush.
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class BrushSql extends Brush {
 

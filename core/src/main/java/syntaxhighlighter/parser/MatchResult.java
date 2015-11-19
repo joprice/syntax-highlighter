@@ -22,8 +22,8 @@ package syntaxhighlighter.parser;
 
 /**
  * Matched result, it will be generated when parsing the content.
- * 
- * @author Chan Wai Shing <cws1989@gmail.com>
+ *
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class MatchResult {
 
@@ -36,7 +36,7 @@ public class MatchResult {
    */
   private int length;
   /**
-   * The style key for this matched result, see {@link syntaxhighlighter.theme}.
+   * The style key for this matched result
    */
   private String styleKey;
   /**
@@ -48,12 +48,11 @@ public class MatchResult {
 
   /**
    * Constructor.
-   * 
+   *
    * @param offset the position in the document for this matched result
    * @param length the length of the matched result.
-   * @param styleKey the style key for this matched result, cannot be null, see 
-   * {@link syntaxhighlighter.theme}
-   * @param bold indicate whether this match should be bolded or not, for 
+   * @param styleKey the style key for this matched result, cannot be null
+   * @param bold indicate whether this match should be bolded or not, for
    * details see {@link #bold}
    */
   protected MatchResult(int offset, int length, String styleKey, Boolean bold) {
@@ -99,7 +98,7 @@ public class MatchResult {
   }
 
   /**
-   * The style key for this matched result, see {@link syntaxhighlighter.theme}.
+   * The style key for this matched result.
    * @return the style key
    */
   public String getStyleKey() {
@@ -110,7 +109,7 @@ public class MatchResult {
    * Indicate whether this match should be bolded or not.
    * This will override the 'bold' setting of the style (by styleKey).
    * If it is null, there will be nothing done on the 'bold' of the style.
-   * @return true to bold, false not bold, null means not set (no action to 
+   * @return true to bold, false not bold, null means not set (no action to
    * take)
    */
   public Boolean isBold() {

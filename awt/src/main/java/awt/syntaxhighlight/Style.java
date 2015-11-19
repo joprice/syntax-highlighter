@@ -25,19 +25,19 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
 /**
- * The style used by {@link syntaxhiglight.Theme} as those of CSS styles.
- * 
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * The style used by {@link syntaxhighlight.Theme} as those of CSS styles.
+ *
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class Style implements Cloneable {
 
   /**
-   * It indicate whether the {@link #attributeSet} has updated after any style 
+   * It indicate whether the {@link #attributeSet} has updated after any style
    * changes.
    */
   protected boolean changed;
   /**
-   * The {@link AttributeSet} representation of this style.
+   * The {@link javax.swing.text.AttributeSet} representation of this style.
    */
   protected SimpleAttributeSet attributeSet;
   /**
@@ -64,7 +64,7 @@ public class Style implements Cloneable {
   /**
    * Constructor.
    * <p>
-   * <b>Default values:</b><br />
+   * <b>Default values:</b><br>
    * <ul>
    * <li>bold: false;</li>
    * <li>color: black;</li>
@@ -72,7 +72,6 @@ public class Style implements Cloneable {
    * <li>underline: false;</li>
    * <li>italic: false;</li>
    * </ul>
-   * </p>
    */
   public Style() {
     changed = true;
@@ -86,8 +85,8 @@ public class Style implements Cloneable {
   }
 
   /**
-   * Get the {@link AttributeSet} of this style.
-   * @return the {@link AttributeSet}
+   * Get the {@link javax.swing.text.AttributeSet} of this style.
+   * @return the {@link javax.swing.text.AttributeSet}
    */
   public SimpleAttributeSet getAttributeSet() {
     if (changed) {

@@ -5,7 +5,7 @@
  * information on usage and redistribution of this file, and for a
  * DISCLAIMER OF ALL WARRANTIES.
  *
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 package syntaxhighlighter.example;
 
@@ -17,79 +17,34 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import syntaxhighlighter.brush.*;
 import syntaxhighlighter.SyntaxHighlighterParser;
+import java.util.List;
+import syntaxhighlight.ParseResult;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+import java.net.URISyntaxException;
 
 /**
  * Usage example. This will just cover some of the functions. To know other
  * available functions, please read the JavaDoc.
  *
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class Example {
 
   private static final Logger LOG = Logger.getLogger(Example.class.getName());
 
-  /**
-   * Read the resource file from the jar.
-   * @param path the resource path
-   * @return the content of the resource file in byte array
-   * @throws IOException error occurred when reading the content from the file
-   */
-  public static byte[] readResourceFile(String path) throws IOException {
-    if (path == null) {
-      throw new NullPointerException("argument 'path' cannot be null");
-    }
-
-    ByteArrayOutputStream bout = new ByteArrayOutputStream();
-    InputStream in = null;
-    try {
-      in = Example.class.getResourceAsStream(path);
-      if (in == null) {
-        throw new IOException("Resources not found: " + path);
-      }
-
-      int byteRead = 0;
-      byte[] b = new byte[8096];
-
-      while ((byteRead = in.read(b)) != -1) {
-        bout.write(b, 0, byteRead);
-      }
-    } finally {
-      if (in != null) {
-        try {
-          in.close();
-        } catch (IOException ex) {
-        }
-      }
-    }
-
-    return bout.toByteArray();
-  }
-
   public static void main(String[] args) {
-    // the SyntaxHighlighter parser
     SyntaxHighlighterParser parser = new SyntaxHighlighterParser(new BrushXml());
-    // turn HTML script on
-    //parser.setHtmlScript(true);
-    // set HTML Script brushes
-    //parser.setHTMLScriptBrushes(Arrays.asList(new BrushCss(), new BrushJScript()));
-    // besides set, you can also add
-    //parser.addHTMLScriptBrush(new BrushPhp());
-
     parser.setBrush(new BrushScala());
-
-    // // initialize the highlighter and use RDark theme
-    // SyntaxHighlighter highlighter = new SyntaxHighlighter(parser, new ThemeRDark());
-    // // // set the line number count from 10 instead of 1
-    // // highlighter.setFirstLine(10);
-    // // set to highlight line 13, 27, 28, 38, 42, 43 and 53
-    // //highlighter.setHighlightedLineList(Arrays.asList(13, 27, 28, 38, 42, 43, 53));
     try {
-      // set the content of the script, the example.html is located in the jar: /syntaxhighlighter/example/example.html
-      //highlighter.setContent(
-      String content = new String(readResourceFile("/example.scala"));
-      java.util.List<syntaxhighlight.ParseResult> output = parser.parse(null, content);
-      System.out.println(output);
-    } catch (IOException ex) {
+      String resourcePath = "/example.scala";
+      String content = new String(Files.readAllBytes(Paths.get(Example.class.getResource(resourcePath).toURI())));
+
+      //Example.class.getResourceAsStream("/example.scala");
+      //String content = new String(readResourceFile("/example.scala"));
+      List<ParseResult> output = parser.parse(null, content);
+      LOG.info(output.toString());
+    } catch (IOException | URISyntaxException ex) {
       LOG.log(Level.SEVERE, null, ex);
     }
   }

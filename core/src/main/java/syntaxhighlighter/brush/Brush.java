@@ -31,7 +31,7 @@ import java.util.List;
  * rules to determine the structure of the code and apply different color to 
  * different group of component.
  * 
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class Brush {
 

@@ -1,11 +1,11 @@
 /**
  * This is part of the Java SyntaxHighlighter.
- *
+ * 
  * It is distributed under MIT license. See the file 'readme.txt' for
  * information on usage and redistribution of this file, and for a
  * DISCLAIMER OF ALL WARRANTIES.
- *
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * 
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 package syntaxhighlighter.example;
 
@@ -19,15 +19,18 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import syntaxhighlight.SyntaxHighlighter;
-import syntaxhighlighter.brush.*;
+import syntaxhighlighter.brush.BrushCss;
+import syntaxhighlighter.brush.BrushJScript;
+import syntaxhighlighter.brush.BrushPhp;
+import syntaxhighlighter.brush.BrushXml;
 import syntaxhighlighter.SyntaxHighlighterParser;
 import syntaxhighlighter.theme.ThemeRDark;
 
 /**
- * Usage example. This will just cover some of the functions. To know other
+ * Usage example. This will just cover some of the functions. To know other 
  * available functions, please read the JavaDoc.
- *
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * 
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class Example {
 
@@ -89,13 +92,11 @@ public class Example {
         // the SyntaxHighlighter parser
         SyntaxHighlighterParser parser = new SyntaxHighlighterParser(new BrushXml());
         // turn HTML script on
-        //parser.setHtmlScript(true);
+        parser.setHtmlScript(true);
         // set HTML Script brushes
-        //parser.setHTMLScriptBrushes(Arrays.asList(new BrushCss(), new BrushJScript()));
+        parser.setHTMLScriptBrushes(Arrays.asList(new BrushCss(), new BrushJScript()));
         // besides set, you can also add
-        //parser.addHTMLScriptBrush(new BrushPhp());
-
-        parser.setBrush(new BrushScala());
+        parser.addHTMLScriptBrush(new BrushPhp());
 
         // initialize the highlighter and use RDark theme
         SyntaxHighlighter highlighter = new SyntaxHighlighter(parser, new ThemeRDark());
@@ -105,7 +106,7 @@ public class Example {
         highlighter.setHighlightedLineList(Arrays.asList(13, 27, 28, 38, 42, 43, 53));
         try {
           // set the content of the script, the example.html is located in the jar: /syntaxhighlighter/example/example.html
-          highlighter.setContent(new String(readResourceFile("/example2.scala")));
+          highlighter.setContent(new String(readResourceFile("/syntaxhighlighter/example/example.html")));
         } catch (IOException ex) {
           LOG.log(Level.SEVERE, null, ex);
         }

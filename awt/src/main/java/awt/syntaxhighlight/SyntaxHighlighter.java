@@ -30,7 +30,7 @@ import javax.swing.JScrollPane;
 /**
  * The syntax highlighter.
  * 
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class SyntaxHighlighter extends JScrollPane {
 

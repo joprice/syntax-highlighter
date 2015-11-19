@@ -27,7 +27,7 @@ import syntaxhighlight.Theme;
 
 /**
  * Fade to Grey theme.
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class ThemeFadeToGrey extends Theme {
 

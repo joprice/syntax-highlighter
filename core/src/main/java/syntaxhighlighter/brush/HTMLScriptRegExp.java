@@ -23,13 +23,13 @@ package syntaxhighlighter.brush;
 import java.util.regex.Pattern;
 
 /**
- * Regular expression for HTML script. This will be used to determine if the 
- * language was implanted into the HTML using {@code left} and {@code right}. 
- * e.g. left is "&lt;script>" and right is "&lt;/script>", if there is any 
- * content start with "&lt;script>" and "&lt;/script>", the content in between 
+ * Regular expression for HTML script. This will be used to determine if the
+ * language was implanted into the HTML using {@code left} and {@code right}.
+ * e.g. left is {@literal "&lt;script>"} and right is {@literal "&lt;/script>" }, if there is any
+ * content start with {@literal "&lt;script>" } and {@literal "&lt;/script>" }, the content in between
  * these two will be parsed by using this brush.
- * 
- * @author Chan Wai Shing <cws1989@gmail.com>
+ *
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class HTMLScriptRegExp {
 
@@ -104,10 +104,10 @@ public class HTMLScriptRegExp {
 
   /**
    * Get the pattern of this HTML script RegExp.
-   * It is a combination of left and right tag and some pattern to match the 
-   * in-between content. Group 1 is the left tag, group 2 is the inner content, 
+   * It is a combination of left and right tag and some pattern to match the
+   * in-between content. Group 1 is the left tag, group 2 is the inner content,
    * group 3 is the right tag.
-   * 
+   *
    * @return the pattern with flags: CASE_INSENSITIVE and DOTALL
    */
   public Pattern getpattern() {

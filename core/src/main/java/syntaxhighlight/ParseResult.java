@@ -27,12 +27,12 @@ import java.util.List;
 
 /**
  * The parser parsed result.
- * 
- * This class include the information needed to highlight the syntax. 
- * Information includes where the content located in the document (offset and 
+ *
+ * This class include the information needed to highlight the syntax.
+ * Information includes where the content located in the document (offset and
  * length) and what style(s) should be applied on that segment of content.
- * 
- * @author Chan Wai Shing <cws1989@gmail.com>
+ *
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class ParseResult {
 
@@ -45,14 +45,14 @@ public class ParseResult {
    */
   protected int length;
   /**
-   * The style keys of the content. The style at higher index of the list will 
+   * The style keys of the content. The style at higher index of the list will
    * override the style of the lower index.
    */
   protected List<String> styleKeys;
 
   /**
    * Constructor.
-   * 
+   *
    * @param offset the start position of the content
    * @param length the length of the content
    * @param styleKeys the style keys of the content
@@ -96,8 +96,7 @@ public class ParseResult {
   }
 
   /**
-   * Get the style keys represented by one string key, see 
-   * {@link Theme#getStylesAttributeSet(String)}.
+   * Get the style keys represented by one string key
    * @return the style keys of the content
    */
   public String getStyleKeysString() {
@@ -145,7 +144,7 @@ public class ParseResult {
   }
 
   /**
-   * The style keys for this matched result, see {@link syntaxhighlighter.theme}.
+   * The style keys for this matched result
    * @return the style keys
    */
   public List<String> getStyleKeys() {

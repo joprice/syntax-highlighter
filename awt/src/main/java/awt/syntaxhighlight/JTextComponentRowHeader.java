@@ -50,7 +50,7 @@ import javax.swing.text.JTextComponent;
  * 
  * The text lines in {@link JTextComponent} must be fixed height.
  * 
- * @author Chan Wai Shing <cws1989@gmail.com>
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class JTextComponentRowHeader extends JPanel {
 

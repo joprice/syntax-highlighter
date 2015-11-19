@@ -28,14 +28,14 @@ import java.util.logging.Logger;
 import javax.swing.text.SimpleAttributeSet;
 
 /**
- * Theme for the {@link SyntaxHighlighterPane} and 
+ * Theme for the {@link SyntaxHighlighterPane} and
  * {@link JTextComponentRowHeader}.
- * 
- * To make a new theme, either extending this class or initiate this class and 
- * set parameters using setters. For the default value, find the comment of the 
+ *
+ * To make a new theme, either extending this class or initiate this class and
+ * set parameters using setters. For the default value, find the comment of the
  * constructor.
- * 
- * @author Chan Wai Shing <cws1989@gmail.com>
+ *
+ * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class Theme {
 
@@ -72,12 +72,12 @@ public class Theme {
    */
   protected Font gutterTextFont;
   /**
-   * The minimum padding from 'the leftmost of the line number text' to 
+   * The minimum padding from 'the leftmost of the line number text' to
    * 'the left margin'.
    */
   protected int gutterTextPaddingLeft;
   /**
-   * The minimum padding from 'the rightmost of the line number text' to 
+   * The minimum padding from 'the rightmost of the line number text' to
    * 'the right margin' (not to the gutter border).
    */
   protected int gutterTextPaddingRight;
@@ -85,7 +85,7 @@ public class Theme {
    * Text area.
    */
   /**
-   * The default style. When the style requested by {@link #getStyle(String)} 
+   * The default style. When the style requested by {@link #getStyle(String)}
    * not exist, this will be returned.
    */
   protected Style plain;
@@ -95,9 +95,9 @@ public class Theme {
   protected Map<String, Style> styles;
 
   /**
-   * Constructor.<br />
+   * Constructor.<br>
    * <p>
-   * <b>Default value:</b><br />
+   * <b>Default value:</b><br>
    * <ul>
    * <li>font: Consolas 12pt</li>
    * <li>background: white</li>
@@ -108,7 +108,6 @@ public class Theme {
    * <li>gutter text padding-left: 7px</li>
    * <li>gutter text padding-right: 7px</li>
    * </ul>
-   * </p>
    */
   public Theme() {
     font = new Font("Consolas", Font.PLAIN, 12);
@@ -164,10 +163,10 @@ public class Theme {
   }
 
   /**
-   * Get the {@link AttributeSet} of {@code styleKeys}. For more than one 
+   * Get the {@link javax.swing.text.AttributeSet} of {@code styleKeys}. For more than one
    * styles, separate the styles by space, e.g. 'plain comments'.
    * @param styleKeys the style keys with keys separated by space
-   * @return the combined {@link AttributeSet}
+   * @return the combined {@link javax.swing.text.AttributeSet}
    */
   public SimpleAttributeSet getStylesAttributeSet(String styleKeys) {
     if (styleKeys.indexOf(' ') != -1) {
@@ -204,8 +203,8 @@ public class Theme {
   /**
    * Get the style by keyword.
    * @param key the keyword
-   * @return the {@link syntaxhighlighter.theme.Style} related to the 
-   * {@code key}; if the style related to the {@code key} not exist, the 
+   * @return the {@link syntaxhighlight.Style} related to the
+   * {@code key}; if the style related to the {@code key} not exist, the
    * style of 'plain' will return.
    */
   public Style getStyle(String key) {
@@ -359,7 +358,7 @@ public class Theme {
   }
 
   /**
-   * The minimum padding from 'the leftmost of the line number text' to 
+   * The minimum padding from 'the leftmost of the line number text' to
    * 'the left margin'.
    * @return the padding in pixel
    */
@@ -368,7 +367,7 @@ public class Theme {
   }
 
   /**
-   * The minimum padding from 'the leftmost of the line number text' to 
+   * The minimum padding from 'the leftmost of the line number text' to
    * 'the left margin'.
    * @param gutterTextPaddingLeft in pixel
    */
@@ -377,7 +376,7 @@ public class Theme {
   }
 
   /**
-   * The minimum padding from 'the rightmost of the line number text' to 
+   * The minimum padding from 'the rightmost of the line number text' to
    * 'the right margin' (not to the gutter border).
    * @return the padding in pixel
    */
@@ -386,7 +385,7 @@ public class Theme {
   }
 
   /**
-   * The minimum padding from 'the rightmost of the line number text' to 
+   * The minimum padding from 'the rightmost of the line number text' to
    * 'the right margin' (not to the gutter border).
    * @param gutterTextPaddingRight in pixel
    */
