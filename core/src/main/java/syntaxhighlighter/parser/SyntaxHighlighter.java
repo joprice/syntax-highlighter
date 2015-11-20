@@ -27,13 +27,13 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.text.Segment;
+import syntaxhighlighter.Segment;
 import syntaxhighlighter.brush.Brush;
 import syntaxhighlighter.brush.RegExpRule;
 
 /**
  * The parser of the syntax highlighter.
- * 
+ *
  * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class SyntaxHighlighter {
@@ -105,15 +105,15 @@ public class SyntaxHighlighter {
   }
 
   /**
-   * Parse the content start from {@code offset} with {@code length} and 
+   * Parse the content start from {@code offset} with {@code length} and
    * return the result.
-   * 
+   *
    * @param brush the brush to use
    * @param htmlScript turn HTML-Script on or not
    * @param content the content to parse in char array
    * @param offset the offset
    * @param length the length
-   * 
+   *
    * @return the parsed result, the key of the map is style key
    */
   public Map<Integer, List<MatchResult>> parse(Brush brush, boolean htmlScript, char[] content, int offset, int length) {
@@ -126,16 +126,16 @@ public class SyntaxHighlighter {
 
   /**
    * Parse the content start from {@code offset} with {@code length} with the
-   * brush and return the result. All new matches will be added to 
+   * brush and return the result. All new matches will be added to
    * {@code matches}.
-   * 
+   *
    * @param matches the list of matches
    * @param brush the brush to use
    * @param htmlScript turn HTML-Script on or not
    * @param content the content to parse in char array
    * @param offset the offset
    * @param length the length
-   * 
+   *
    * @return the parsed result, the key of the map is style key
    */
   protected Map<Integer, List<MatchResult>> parse(Map<Integer, List<MatchResult>> matches, Brush brush, boolean htmlScript, char[] content, int offset, int length) {
@@ -181,9 +181,9 @@ public class SyntaxHighlighter {
   }
 
   /**
-   * Parse the content start from {@code offset} with {@code length} using the 
+   * Parse the content start from {@code offset} with {@code length} using the
    * {@code regExpRule}. All new matches will be added to {@code matches}.
-   * 
+   *
    * @param matches the list of matches
    * @param regExpRule the RegExp rule to use
    * @param content the content to parse in char array
@@ -231,9 +231,9 @@ public class SyntaxHighlighter {
   }
 
   /**
-   * Set HTML Script brushes. Note that this will clear all previous recorded 
+   * Set HTML Script brushes. Note that this will clear all previous recorded
    * HTML Script brushes.
-   * 
+   *
    * @param htmlScriptBrushList the list that contain the brushes
    */
   public void setHTMLScriptBrushList(List<Brush> htmlScriptBrushList) {
