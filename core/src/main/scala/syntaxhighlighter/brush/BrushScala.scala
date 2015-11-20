@@ -26,32 +26,32 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * JavaScript brush.
+ * Scala brush.
  * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
-public class BrushJScript extends Brush {
+object BrushScala {
 
-  public BrushJScript() {
-    super();
+  // Contributed by Yegor Jbanov and David Bernard.
+  val keywords = "val sealed case def true trait implicit forSome import match object null finally super " +
+    "override try lazy for var catch throw type extends class while with new final yield abstract " +
+    "else do if return protected private this package false"
+  val keyops = "[_:=><%#@]+"
 
-    String keywords = "break case catch continue "
-            + "default delete do else false  "
-            + "for function if in instanceof "
-            + "new null return super switch "
-            + "this throw true try typeof var while with";
-
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+  val brush = Brush({
+    val _regExpRuleList = new ArrayList[RegExpRule]()
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // one line comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
-    // it's a standard not to use multi-line string
-    _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // double quoted strings
-    _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string")); // single quoted strings
-    _regExpRuleList.add(new RegExpRule("\\s*#.*", Pattern.MULTILINE, "preprocessor")); // preprocessor tags like #region and #endregion
-    _regExpRuleList.add(new RegExpRule(getKeywords(keywords), Pattern.MULTILINE, "keyword")); // keywords
-    setRegExpRuleList(_regExpRuleList);
-
-    setHTMLScriptRegExp(HTMLScriptRegExp.scriptScriptTags);
-
-    setCommonFileExtensionList(Arrays.asList("js", "es"));
-  }
+    _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineSingleQuotedString, "string")); // multi-line strings
+    // problem: scala should start multiple line string with triple double-quote
+    _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineDoubleQuotedString, "string")); // double-quoted string
+    _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string")); // strings
+    _regExpRuleList.add(new RegExpRule("0x[a-f0-9]+|\\d+(\\.\\d+)?", Pattern.CASE_INSENSITIVE, "value")); // numbers
+    _regExpRuleList.add(new RegExpRule(Brush.keywords(keywords), Pattern.MULTILINE, "keyword")); // keywords
+    _regExpRuleList.add(new RegExpRule(keyops, Pattern.MULTILINE, "keyword")); // scala keyword
+    _regExpRuleList.add(new RegExpRule("\\b[A-Z]\\w+\\b", Pattern.MULTILINE, "color2")); // types
+    _regExpRuleList.add(new RegExpRule("\\b(?<=(def|case)) \\w+\\b", Pattern.MULTILINE, "color3")); // types
+    _regExpRuleList
+  },
+    Arrays.asList("scala")
+  )
 }

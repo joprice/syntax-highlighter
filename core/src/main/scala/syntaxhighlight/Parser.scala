@@ -24,17 +24,17 @@ import java.util.List;
 
 /**
  * The parser for syntax highlight.
- * 
+ *
  * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
-public interface Parser {
+trait Parser {
 
   /**
    * Parse the {@code content} and return the parsed result.
-   * @param fileExtension the file extension of the content, null means not 
+   * @param fileExtension the file extension of the content, null means not
    * provided
    * @param content the content
    * @return the parsed result
    */
-  List<ParseResult> parse(String fileExtension, String content);
+  def parse(fileExtension: String, content: String): List[ParseResult]
 }

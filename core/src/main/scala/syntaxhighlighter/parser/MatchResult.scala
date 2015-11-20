@@ -18,15 +18,34 @@
 // LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-package syntaxhighlighter.brush;
+package syntaxhighlighter.parser;
+
+import scala.beans.BeanProperty
 
 /**
- * Plain text file brush.
+ * Matched result, it will be generated when parsing the content.
+ *
  * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
+ * @param offset The position in the document for this matched result.
+ * @param length The length of the matched result.
+ * @param styleKey The style key for this matched result
+ * @param bold Indicate whether this match should be bolded or not.
+ * This will override the 'bold' setting of the style (by styleKey).
+ * If it is null, there will be nothing done on the 'bold' of the style.
  */
-public class BrushPlain extends Brush {
-
-  public BrushPlain() {
-    super();
+case class MatchResult(
+  @BeanProperty offset: Int,
+  @BeanProperty length: Int,
+  @BeanProperty styleKey: String,
+  bold: Option[Boolean]
+) {
+  // this ugly hack is required because the origninal write used a boxed boolean
+  // to represent 3 states
+  def this(offset: Int, length: Int, styleKey: String, isBold: java.lang.Boolean) = {
+    this(offset, length, styleKey, Option(isBold).map(_.booleanValue))
   }
+
+  def isBold(): java.lang.Boolean = bold.map(java.lang.Boolean.valueOf).orNull
+
+  require(styleKey != null)
 }

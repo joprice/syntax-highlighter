@@ -31,45 +31,42 @@ import java.util.regex.Pattern;
  * General XML (include HTML) brush.
  * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
-public class BrushXml extends Brush {
+object BrushXml {
 
-  public BrushXml() {
-    super();
-
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
-
+  val brush = Brush({
+    val _regExpRuleList = new ArrayList[RegExpRule]();
     _regExpRuleList.add(new RegExpRule("(\\&lt;|<)\\!\\[[\\w\\s]*?\\[(.|\\s)*?\\]\\](\\&gt;|>)", Pattern.MULTILINE, "color2")); // <![ ... [ ... ]]>
     _regExpRuleList.add(new RegExpRule(RegExpRule.xmlComments, "comments")); // <!-- ... -->
 
     // regular expression for highlighting the tag
-    RegExpRule tagRegExpRule = new RegExpRule("(?:&lt;|<)[\\s\\/\\?]*([:\\w-\\.]+)", Pattern.COMMENTS, "");
-    Map<Integer, Object> tagMatchesToStyleKey = new HashMap<Integer, Object>();
+    val tagRegExpRule = new RegExpRule("(?:&lt;|<)[\\s\\/\\?]*([:\\w-\\.]+)", Pattern.COMMENTS, "");
+    val tagMatchesToStyleKey = new HashMap[Integer, Object]();
     // highlight the tag only, not including the symbols at the start, 1 means the group 1 of the matched results
     tagMatchesToStyleKey.put(1, "keyword");
     tagRegExpRule.setGroupOperations(tagMatchesToStyleKey);
 
     // regular expression for highlighting the variable assignment
-    RegExpRule valueRegExpRule = new RegExpRule("([\\w:\\-\\.]+)"
+    val valueRegExpRule = new RegExpRule("([\\w:\\-\\.]+)"
             + "\\s*=\\s*"
             + "(\".*?\"|'.*?'|\\w+)", Pattern.COMMENTS, "");
-    Map<Integer, Object> valueMatchesToStyleKey = new HashMap<Integer, Object>();
+    val valueMatchesToStyleKey = new HashMap[Integer, Object]();
     // highlight the variable name, 1 means the group 1 of the matched results
     valueMatchesToStyleKey.put(1, "color1");
     // highlight the value, 2 means the group 2 of the matched results
     valueMatchesToStyleKey.put(2, "string");
     valueRegExpRule.setGroupOperations(valueMatchesToStyleKey);
 
-    RegExpRule _regExpRule = new RegExpRule("((?:&lt;|<)[\\s\\/\\?]*(?:\\w+))(.*?)[\\s\\/\\?]*(?:&gt;|>)", Pattern.DOTALL, "");
-    Map<Integer, Object> matchesToRegExp = new HashMap<Integer, Object>();
+    val _regExpRule = new RegExpRule("((?:&lt;|<)[\\s\\/\\?]*(?:\\w+))(.*?)[\\s\\/\\?]*(?:&gt;|>)", Pattern.DOTALL, "")
+    val matchesToRegExp = new HashMap[Integer, Object]()
     // perform futher operation on the group 1 of the matched results
-    matchesToRegExp.put(1, tagRegExpRule);
+    matchesToRegExp.put(1, tagRegExpRule)
     // perform futher operation on the group 2 of the matched results
-    matchesToRegExp.put(2, valueRegExpRule);
-    _regExpRule.setGroupOperations(matchesToRegExp);
-    _regExpRuleList.add(_regExpRule);
+    matchesToRegExp.put(2, valueRegExpRule)
+    _regExpRule.setGroupOperations(matchesToRegExp)
+    _regExpRuleList.add(_regExpRule)
 
-    setRegExpRuleList(_regExpRuleList);
-
-    setCommonFileExtensionList(Arrays.asList("xml", "html", "xhtml", "xslt"));
-  }
+    _regExpRuleList
+  },
+    Arrays.asList("xml", "html", "xhtml", "xslt")
+  )
 }

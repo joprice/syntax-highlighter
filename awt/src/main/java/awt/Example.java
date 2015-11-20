@@ -1,10 +1,10 @@
 /**
  * This is part of the Java SyntaxHighlighter.
- * 
+ *
  * It is distributed under MIT license. See the file 'readme.txt' for
  * information on usage and redistribution of this file, and for a
  * DISCLAIMER OF ALL WARRANTIES.
- * 
+ *
  * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 package syntaxhighlighter.example;
@@ -27,9 +27,9 @@ import syntaxhighlighter.SyntaxHighlighterParser;
 import syntaxhighlighter.theme.ThemeRDark;
 
 /**
- * Usage example. This will just cover some of the functions. To know other 
+ * Usage example. This will just cover some of the functions. To know other
  * available functions, please read the JavaDoc.
- * 
+ *
  * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
  */
 public class Example {
@@ -90,13 +90,13 @@ public class Example {
         start = System.currentTimeMillis();
 
         // the SyntaxHighlighter parser
-        SyntaxHighlighterParser parser = new SyntaxHighlighterParser(new BrushXml());
+        SyntaxHighlighterParser parser = new SyntaxHighlighterParser(BrushXml.brush());
         // turn HTML script on
         parser.setHtmlScript(true);
         // set HTML Script brushes
-        parser.setHTMLScriptBrushes(Arrays.asList(new BrushCss(), new BrushJScript()));
+        parser.setHTMLScriptBrushes(Arrays.asList(BrushCss.brush(), BrushJScript.brush()));
         // besides set, you can also add
-        parser.addHTMLScriptBrush(new BrushPhp());
+        parser.addHTMLScriptBrush(BrushPhp.brush());
 
         // initialize the highlighter and use RDark theme
         SyntaxHighlighter highlighter = new SyntaxHighlighter(parser, new ThemeRDark());

@@ -1,4 +1,4 @@
-// Copyright (c) 2011 Chan Wai Shing
+// Copyright (c) 2012 Chan Wai Shing
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -18,31 +18,32 @@
 // LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-package syntaxhighlighter.brush;
+package syntaxhighlight;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.regex.Pattern;
+import scala.collection.JavaConverters._
+import scala.beans.BeanProperty
 
 /**
- * Diff file brush.
+ * The parser parsed result.
+ *
+ * This class include the information needed to highlight the syntax.
+ * Information includes where the content located in the document (offset and
+ * length) and what style(s) should be applied on that segment of content.
+ *
  * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
+ * @param offset The start position of the content.
+ * @param length The length of the content.
+ * @param styleKeys The style keys of the content. The style at higher index of the list will
+ * override the style of the lower index.
  */
-public class BrushDiff extends Brush {
-
-  public BrushDiff() {
-    super();
-
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
-    _regExpRuleList.add(new RegExpRule("^\\+\\+\\+\\s.*$", Pattern.MULTILINE, "color2")); // new file
-    _regExpRuleList.add(new RegExpRule("^\\-\\-\\-\\s.*$", Pattern.MULTILINE, "color2")); // old file
-    _regExpRuleList.add(new RegExpRule("^\\s.*$", Pattern.MULTILINE, "color1")); // unchanged
-    _regExpRuleList.add(new RegExpRule("^@@.*@@$", Pattern.MULTILINE, "variable")); // location
-    _regExpRuleList.add(new RegExpRule("^\\+.*$", Pattern.MULTILINE, "string")); // additions
-    _regExpRuleList.add(new RegExpRule("^\\-.*$", Pattern.MULTILINE, "color3")); // deletions
-    setRegExpRuleList(_regExpRuleList);
-
-    setCommonFileExtensionList(Arrays.asList("diff", "patch"));
-  }
+case class ParseResult(
+  @BeanProperty offset: Int,
+  @BeanProperty length: Int,
+  styleKeys: List[String]
+) {
+  def getStyleKeysString(): String = styleKeys.asScala.mkString(" ")
 }

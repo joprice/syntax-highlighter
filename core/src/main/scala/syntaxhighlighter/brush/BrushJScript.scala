@@ -26,39 +26,29 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * Action Script brush.
- * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
+ * JavaScript brush.
+ * @author Chan Wai Shing <cws1989@gmail.com>
  */
-public class BrushAS3 extends Brush {
+object BrushJScript {
 
-  public BrushAS3() {
-    super();
+  val keywords = "break case catch continue " +
+    "default delete do else false  " +
+    "for function if in instanceof " +
+    "new null return super switch " +
+    "this throw true try typeof var while with"
 
-    // Created by Peter Atoria @ http://iAtoria.com
-
-    String inits = "class interface function package";
-    String keywords = "-Infinity ...rest Array as AS3 Boolean break case catch const continue Date decodeURI "
-            + "decodeURIComponent default delete do dynamic each else encodeURI encodeURIComponent escape "
-            + "extends false final finally flash_proxy for get if implements import in include Infinity "
-            + "instanceof int internal is isFinite isNaN isXMLName label namespace NaN native new null "
-            + "Null Number Object object_proxy override parseFloat parseInt private protected public "
-            + "return set static String super switch this throw true try typeof uint undefined unescape "
-            + "use void while with";
-
-    List<RegExpRule> _regExpRuleList = new ArrayList<RegExpRule>();
+  val brush = Brush({
+    val _regExpRuleList = new ArrayList[RegExpRule]();
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // one line comments
     _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
+    // it's a standard not to use multi-line string
     _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // double quoted strings
     _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string")); // single quoted strings
-    _regExpRuleList.add(new RegExpRule("\\b([\\d]+(\\.[\\d]+)?|0x[a-f0-9]+)\\b", Pattern.CASE_INSENSITIVE, "value")); // numbers
-    _regExpRuleList.add(new RegExpRule(getKeywords(inits), Pattern.MULTILINE, "color3")); // initializations
-    _regExpRuleList.add(new RegExpRule(getKeywords(keywords), Pattern.MULTILINE, "keyword")); // keywords
-    _regExpRuleList.add(new RegExpRule("var", Pattern.MULTILINE, "variable")); // variable
-    _regExpRuleList.add(new RegExpRule("trace", Pattern.MULTILINE, "color1")); // trace
-    setRegExpRuleList(_regExpRuleList);
-
-    setHTMLScriptRegExp(HTMLScriptRegExp.scriptScriptTags);
-
-    setCommonFileExtensionList(Arrays.asList("as"));
-  }
+    _regExpRuleList.add(new RegExpRule("\\s*#.*", Pattern.MULTILINE, "preprocessor")); // preprocessor tags like #region and #endregion
+    _regExpRuleList.add(new RegExpRule(Brush.keywords(keywords), Pattern.MULTILINE, "keyword")); // keywords
+    _regExpRuleList
+  },
+    Arrays.asList("js", "es"),
+    Some(HTMLScriptRegExp.scriptScriptTags)
+  )
 }
