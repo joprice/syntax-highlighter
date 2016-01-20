@@ -20,9 +20,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package syntaxhighlighter.brush;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -37,18 +34,17 @@ object BrushJScript {
     "new null return super switch " +
     "this throw true try typeof var while with"
 
-  val brush = Brush({
-    val _regExpRuleList = new ArrayList[RegExpRule]();
-    _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // one line comments
-    _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
-    // it's a standard not to use multi-line string
-    _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // double quoted strings
-    _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string")); // single quoted strings
-    _regExpRuleList.add(new RegExpRule("\\s*#.*", Pattern.MULTILINE, "preprocessor")); // preprocessor tags like #region and #endregion
-    _regExpRuleList.add(new RegExpRule(Brush.keywords(keywords), Pattern.MULTILINE, "keyword")); // keywords
-    _regExpRuleList
-  },
-    Arrays.asList("js", "es"),
+  val brush = Brush(
+    List(
+      RegExpRule(RegExpRule.singleLineCComments, "comments"), // one line comments
+      RegExpRule(RegExpRule.multiLineCComments, "comments"), // multiline comments
+      // it's a standard not to use multi-line string
+      RegExpRule(RegExpRule.doubleQuotedString, "string"), // double quoted strings
+      RegExpRule(RegExpRule.singleQuotedString, "string"), // single quoted strings
+      RegExpRule("\\s*#.*", Pattern.MULTILINE, "preprocessor"), // preprocessor tags like #region and #endregion
+      RegExpRule(Brush.keywords(keywords), Pattern.MULTILINE, "keyword") // keywords
+    ),
+    List("js", "es"),
     Some(HTMLScriptRegExp.scriptScriptTags)
   )
 }

@@ -20,9 +20,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package syntaxhighlighter.brush;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -74,19 +71,18 @@ object BrushPhp {
 
   val constants = "__FILE__ __LINE__ __METHOD__ __FUNCTION__ __CLASS__";
 
-  val brush = Brush({
-    val _regExpRuleList = new ArrayList[RegExpRule]()
-    _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // one line comments
-    _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
-    _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // double quoted strings
-    _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string")); // single quoted strings
-    _regExpRuleList.add(new RegExpRule("\\$\\w+", "variable")); // variables
-    _regExpRuleList.add(new RegExpRule(Brush.keywords(funcs), Pattern.MULTILINE | Pattern.CASE_INSENSITIVE, "functions")); // common functions
-    _regExpRuleList.add(new RegExpRule(Brush.keywords(constants), Pattern.MULTILINE | Pattern.CASE_INSENSITIVE, "constants")); // constants
-    _regExpRuleList.add(new RegExpRule(Brush.keywords(keywords), Pattern.MULTILINE, "keyword")); // keyword
-    _regExpRuleList
-  },
-    Arrays.asList("php", "php3", "php4", "php5", "phps", "phtml"),
+  val brush = Brush(
+    List(
+      RegExpRule(RegExpRule.singleLineCComments, "comments"), // one line comments
+      RegExpRule(RegExpRule.multiLineCComments, "comments"), // multiline comments
+      RegExpRule(RegExpRule.doubleQuotedString, "string"), // double quoted strings
+      RegExpRule(RegExpRule.singleQuotedString, "string"), // single quoted strings
+      RegExpRule("\\$\\w+", "variable"), // variables
+      RegExpRule(Brush.keywords(funcs), Pattern.MULTILINE | Pattern.CASE_INSENSITIVE, "functions"), // common functions
+      RegExpRule(Brush.keywords(constants), Pattern.MULTILINE | Pattern.CASE_INSENSITIVE, "constants"), // constants
+      RegExpRule(Brush.keywords(keywords), Pattern.MULTILINE, "keyword") // keyword
+    ),
+    List("php", "php3", "php4", "php5", "phps", "phtml"),
     Some(HTMLScriptRegExp.phpScriptTags)
   )
 }

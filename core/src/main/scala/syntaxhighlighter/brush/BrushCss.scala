@@ -20,9 +20,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package syntaxhighlighter.brush;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -70,21 +67,20 @@ object BrushCss {
     "\\b" + str.replaceAll("\\s", "(?!-)(?!:)\\\\b|\\\\b()") + ":\\b";
   }
 
-  val brush = Brush({
-    val _regExpRuleList = new ArrayList[RegExpRule]()
-    _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
-    _regExpRuleList.add(new RegExpRule(RegExpRule.doubleQuotedString, "string")); // double quoted strings
-    _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string")); // single quoted strings
-    _regExpRuleList.add(new RegExpRule("\\#[a-fA-F0-9]{3,6}", "value")); // html colors
-    _regExpRuleList.add(new RegExpRule("(-?\\d+)(\\.\\d+)?(px|em|pt|\\:|\\%|)", "value")); // sizes
-    _regExpRuleList.add(new RegExpRule("!important", "color3")); // !important
-    _regExpRuleList.add(new RegExpRule(getKeywordsCSS(keywords), Pattern.MULTILINE, "keyword")); // keywords
-    _regExpRuleList.add(new RegExpRule(getValuesCSS(values), "value")); // values
-    _regExpRuleList.add(new RegExpRule(Brush.keywords(fonts), "color1")); // fonts
-    _regExpRuleList
-  },
-    Arrays.asList("css"),
-    Some(new HTMLScriptRegExp("(?:&lt;|<)\\s*style.*?(?:&gt;|>)", "(?:&lt;|<)\\/\\s*style\\s*(?:&gt;|>)"))
+  val brush = Brush(
+    List(
+      RegExpRule(RegExpRule.multiLineCComments, "comments"), // multiline comments
+      RegExpRule(RegExpRule.doubleQuotedString, "string"), // double quoted strings
+      RegExpRule(RegExpRule.singleQuotedString, "string"), // single quoted strings
+      RegExpRule("\\#[a-fA-F0-9]{3,6}", "value"), // html colors
+      RegExpRule("(-?\\d+)(\\.\\d+)?(px|em|pt|\\:|\\%|)", "value"), // sizes
+      RegExpRule("!important", "color3"), // !important
+      RegExpRule(getKeywordsCSS(keywords), Pattern.MULTILINE, "keyword"), // keywords
+      RegExpRule(getValuesCSS(values), "value"), // values
+      RegExpRule(Brush.keywords(fonts), "color1") // fonts
+    ),
+    List("css"),
+    Some(HTMLScriptRegExp("(?:&lt;|<)\\s*style.*?(?:&gt;|>)", "(?:&lt;|<)\\/\\s*style\\s*(?:&gt;|>)"))
   )
 
 }

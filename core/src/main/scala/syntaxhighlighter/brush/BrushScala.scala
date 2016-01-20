@@ -20,9 +20,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package syntaxhighlighter.brush;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -37,21 +34,21 @@ object BrushScala {
     "else do if return protected private this package false"
   val keyops = "[_:=><%#@]+"
 
-  val brush = Brush({
-    val _regExpRuleList = new ArrayList[RegExpRule]()
-    _regExpRuleList.add(new RegExpRule(RegExpRule.singleLineCComments, "comments")); // one line comments
-    _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineCComments, "comments")); // multiline comments
-    _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineSingleQuotedString, "string")); // multi-line strings
-    // problem: scala should start multiple line string with triple double-quote
-    _regExpRuleList.add(new RegExpRule(RegExpRule.multiLineDoubleQuotedString, "string")); // double-quoted string
-    _regExpRuleList.add(new RegExpRule(RegExpRule.singleQuotedString, "string")); // strings
-    _regExpRuleList.add(new RegExpRule("0x[a-f0-9]+|\\d+(\\.\\d+)?", Pattern.CASE_INSENSITIVE, "value")); // numbers
-    _regExpRuleList.add(new RegExpRule(Brush.keywords(keywords), Pattern.MULTILINE, "keyword")); // keywords
-    _regExpRuleList.add(new RegExpRule(keyops, Pattern.MULTILINE, "keyword")); // scala keyword
-    _regExpRuleList.add(new RegExpRule("\\b[A-Z]\\w+\\b", Pattern.MULTILINE, "color2")); // types
-    _regExpRuleList.add(new RegExpRule("\\b(?<=(def|case)) \\w+\\b", Pattern.MULTILINE, "color3")); // types
-    _regExpRuleList
-  },
-    Arrays.asList("scala")
+  val brush = Brush(
+    List[RegExpRule](
+      RegExpRule(RegExpRule.singleLineCComments, "comments"), // one line comments
+      RegExpRule(RegExpRule.multiLineCComments, "comments"), // multiline comments
+      RegExpRule(RegExpRule.multiLineSingleQuotedString, "string"), // multi-line strings
+      RegExpRule(
+        Pattern.compile("\"\"\".*?\"\"\"", Pattern.DOTALL | Pattern.MULTILINE)
+      , "string"),
+      RegExpRule(RegExpRule.singleQuotedString, "string"), // strings
+      RegExpRule("0x[a-f0-9]+|\\d+(\\.\\d+)?", Pattern.CASE_INSENSITIVE, "value"), // numbers
+      RegExpRule(Brush.keywords(keywords), Pattern.MULTILINE, "keyword"), // keywords
+      RegExpRule(keyops, Pattern.MULTILINE, "keyword"), // scala keyword
+      RegExpRule("\\b[A-Z]\\w+\\b", Pattern.MULTILINE, "color2"), // types
+      RegExpRule("\\b(?<=(def|case)) \\w+\\b", Pattern.MULTILINE, "color3") // types
+    ),
+    List("scala")
   )
 }

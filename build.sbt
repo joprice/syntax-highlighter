@@ -1,5 +1,5 @@
 
-cancelable in Global := true
+//cancelable in Global := true
 
 lazy val common = Seq(
   scalaVersion := "2.11.7",
@@ -7,7 +7,10 @@ lazy val common = Seq(
   maxErrors := 10,
   organization := "com.joprice.highlighter",
   version := "0.2-SNAPSHOT",
-  libraryDependencies += "com.novocode" % "junit-interface" % "0.10" % Test,
+  libraryDependencies ++= Seq(
+    "com.novocode" % "junit-interface" % "0.10" % Test,
+    "org.scalatest" %% "scalatest" % "2.2.6" % Test
+  ),
   javacOptions in (Compile, compile) ++= Seq(
     "-source", "1.7", 
     "-target", "1.7"
@@ -17,12 +20,8 @@ lazy val common = Seq(
 lazy val core = project
   .settings(common:_*)
 
-lazy val awt = project
-  .dependsOn(core)
-  .settings(common:_*)
-
 lazy val root = project.in(file("."))
-  .aggregate(core, awt)
+  .aggregate(core)
   .settings(
     publish := {},
     publishLocal := {}

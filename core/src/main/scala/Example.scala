@@ -19,24 +19,15 @@ import java.nio.file.{Paths, Files}
 import java.net.URISyntaxException
 import scala.util.Try
 
-/**
- * Usage example. This will just cover some of the functions. To know other
- * available functions, please read the JavaDoc.
- *
- * @author Chan Wai Shing {@literal <cws1989@gmail.com> }
- */
 object Example {
 
   private val LOG = Logger.getLogger(getClass.getName())
 
   def main(args: Array[String]): Unit = {
-    val parser = new SyntaxHighlighterParser(BrushScala.brush)
-
     val resourcePath = "/example.scala"
-
     Try {
       val content = new String(Files.readAllBytes(Paths.get(getClass.getResource(resourcePath).toURI())))
-      val output = parser.parse(null, content);
+      val output = SyntaxHighlighterParser.parse(null, content, BrushScala.brush);
       LOG.info(output.toString())
     }.recover {
       case ex: Throwable => LOG.log(Level.SEVERE, null, ex);

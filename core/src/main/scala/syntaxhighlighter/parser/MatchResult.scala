@@ -20,8 +20,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package syntaxhighlighter.parser;
 
-import scala.beans.BeanProperty
-
 /**
  * Matched result, it will be generated when parsing the content.
  *
@@ -34,9 +32,9 @@ import scala.beans.BeanProperty
  * If it is null, there will be nothing done on the 'bold' of the style.
  */
 case class MatchResult(
-  @BeanProperty offset: Int,
-  @BeanProperty length: Int,
-  @BeanProperty styleKey: String,
+  offset: Int,
+  length: Int,
+  styleKey: String,
   bold: Option[Boolean]
 ) {
   // this ugly hack is required because the origninal write used a boxed boolean

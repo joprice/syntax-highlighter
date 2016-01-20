@@ -20,8 +20,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package syntaxhighlight;
 
-import java.util.List;
-
 /**
  * The parser for syntax highlight.
  *

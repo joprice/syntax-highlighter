@@ -25,7 +25,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import scala.collection.JavaConverters._
-import scala.beans.BeanProperty
 
 /**
  * The parser parsed result.
@@ -41,8 +40,8 @@ import scala.beans.BeanProperty
  * override the style of the lower index.
  */
 case class ParseResult(
-  @BeanProperty offset: Int,
-  @BeanProperty length: Int,
+  offset: Int,
+  length: Int,
   styleKeys: List[String]
 ) {
   def getStyleKeysString(): String = styleKeys.asScala.mkString(" ")

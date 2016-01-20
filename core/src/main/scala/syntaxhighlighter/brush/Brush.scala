@@ -20,10 +20,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package syntaxhighlighter.brush;
 
-import java.util.ArrayList
-import java.util.List
-import scala.beans.BeanProperty
-
 /**
  * Brush for syntax highlighter.
  *
@@ -54,14 +50,12 @@ object Brush {
     }
     "\\b(?:" + str.replaceAll("^\\s+|\\s+$", "").replaceAll("\\s+", "|") + ")\\b";
   }
-
 }
 
 case class Brush(
-  @BeanProperty regExpRuleList: List[RegExpRule],
+  regExpRuleList: List[RegExpRule],
   commonFileExtensionList: List[String],
   htmlScriptRegExp: Option[HTMLScriptRegExp] = None
 ) {
   def getHTMLScriptRegExp() = htmlScriptRegExp.orNull
-
 }
