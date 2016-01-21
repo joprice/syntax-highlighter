@@ -36,14 +36,4 @@ case class MatchResult(
   length: Int,
   styleKey: String,
   bold: Option[Boolean]
-) {
-  // this ugly hack is required because the origninal write used a boxed boolean
-  // to represent 3 states
-  def this(offset: Int, length: Int, styleKey: String, isBold: java.lang.Boolean) = {
-    this(offset, length, styleKey, Option(isBold).map(_.booleanValue))
-  }
-
-  def isBold(): java.lang.Boolean = bold.map(java.lang.Boolean.valueOf).orNull
-
-  require(styleKey != null)
-}
+)

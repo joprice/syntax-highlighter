@@ -31,7 +31,7 @@ object SyntaxHighlighterParser {
         ParseResult(
           result.offset,
           result.length,
-          styleKeyList.asJava
+          styleKeyList
         )
       }
     }.toList

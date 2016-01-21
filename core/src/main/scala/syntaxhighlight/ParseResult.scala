@@ -20,10 +20,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 package syntaxhighlight;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import scala.collection.JavaConverters._
 
 /**
@@ -43,6 +39,4 @@ case class ParseResult(
   offset: Int,
   length: Int,
   styleKeys: List[String]
-) {
-  def getStyleKeysString(): String = styleKeys.asScala.mkString(" ")
-}
+)

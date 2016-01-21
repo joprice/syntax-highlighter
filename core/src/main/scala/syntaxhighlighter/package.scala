@@ -57,8 +57,7 @@ package object syntaxhighlighter {
       val end = start + result.length
       val keys = result.styleKeys
       // just take the last style
-      val style = keys.get(keys.size - 1)
-      (start, end, style)
+      (start, end, keys.last)
     }
 
     val results = SyntaxHighlighterParser.parse(null, content, brush)
