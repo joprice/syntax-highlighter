@@ -1,8 +1,9 @@
 
 //cancelable in Global := true
 
+scalaVersion in ThisBuild := "2.11.8"
+
 lazy val common = Seq(
-  scalaVersion := "2.11.7",
   fork in run := true,
   maxErrors := 10,
   organization := "com.joprice.highlighter",
